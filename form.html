@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application form</title>
+    <link rel="stylesheet" href="form.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="heading">
+            <h1>Job Application </h1>
+            <h2> ( Web )</h2>
+
+        </div>
+        <form id="myForm" class="form" required="">
+
+            <div class="first">
+                <label for="firstname">First Name</label>
+                <input type="text" name="fname" placeholder="Enter your First Name" id="firstname" required="">
+
+            </div>
+            <div class="">
+                <label for="lastname">Last Name</label>
+                <input type="text" name="lname" placeholder="Enter your Last Name" id="lastname" required="">
+
+            </div>
+            <div class="">
+                <label for="email">Email</label>
+                <input type="text" name="mail" placeholder="Enter Email" id="email" required="">
+
+            </div>
+            <div>
+                <label for="job">Job Role </label>
+                <select id="job" name="job" required="" class="role">
+                    <option value="">Select Job role</option>
+                    <option value="Front-End-Developer">Front-End-Developer</option>
+                    <option value="BackEnd-Developer">BackEnd-Developer</option>
+                    <option value="Full Stack-Developer">Full Stack-Developer</option>
+                </select>
+
+            </div>
+            <div class="textarea">
+                <label for="address">Address</label>
+                <textarea name="add" id="address" placeholder="Enter Your Address.." required=""></textarea>
+
+            </div>
+            <div>
+                <label for="city">City </label>
+                <input type="text" id="city" name="city" placeholder="Enter City" required="">
+
+            </div>
+            <div>
+                <label for="pin">Pincode </label>
+                <input type="number" name="pin" id="pin" placeholder="Enter a Pincode" required="">
+
+            </div>
+
+            <div>
+                <label for="date">Start Date </label>
+                <input type="date" name="date" id="date" placeholder="Enter a Start Date" required="">
+
+            </div>
+            <div>
+                <label for="cv">Upload Your CV</label>
+                <input type="file" name="file" id="cv" required="">
+
+            </div>
+            <div class="btn1">
+                <button class="btn" id="btn">Apply Now</button>
+                <div class="popup" id="popup">
+                    <img src="./checkmark.png" alt="">
+                    <h2>Thank You!</h2>
+                    <p>You have applied succesfully for the role. Thanks!</p>
+                    <button type="button" onclick="closePopup()">Ok</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <script>
+        let myForm=document.getElementById("myForm");
+        myForm.addEventListener("submit", submitForm);
+        function submitForm(e){
+            e.preventDefault();
+        }
+        let btn = document.getElementById("btn");
+        btn.addEventListener("click", function () {
+            let firstname = document.getElementById("firstname").value;
+            let lastname = document.getElementById("lastname").value;
+            let email = document.getElementById("email").value;
+            let job = document.getElementById("job").value;
+            let address = document.getElementById("address").value;
+            let city = document.getElementById("city").value;
+            let pin = document.getElementById("pin").value;
+            let date = document.getElementById("date").value;
+            let cv = document.getElementById("cv").value;
+            let popup = document.getElementById("popup");
+            if (firstname == "") {
+                alert("Please fill the firstname");
+                return false;
+            }
+            else if (lastname == "") {
+                alert("Please fill the lastname");
+                return false;
+            }
+            else if (email == "") {
+                alert("Please fill the email");
+                return false;
+            }
+            else if (job == "") {
+                alert("Please fill the job");
+                return false;
+            }
+            else if (address == "") {
+                alert("Please fill the adress");
+                return false;
+            }
+            else if (city == "") {
+                alert("Please fill the city");
+                return false;
+            }
+            else if (pin == "") {
+                alert("Please fill the pincode");
+                return false;
+            }
+            else if (date == "") {
+                alert("Please fill the date");
+                return false;
+            }
+            else if (cv == "") {
+                alert("Please fill the Resume");
+                return false;
+            }
+            else {
+                console.log("open dialog>>>>");
+                openPopup();
+                // e.preventDefault();
+                return true;
+                // let popup = document.getElementById("popup").style.visibility = "visible";
+
+            }
+        })
+
+        // let popup = document.getElementById("popup");
+
+        function openPopup() {
+            console.log("open");
+            popup.classList.add("open-popup");
+        }
+        function closePopup() {
+            popup.classList.remove("open-popup");
+            // document.location.reload();
+        }
+
+    </script>
+
+</body>
+
+</html>
